@@ -36,12 +36,12 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           OWNER: ${{ github.repository_owner }}
           REPO: ${{ github.event.repository.name }}
-          WORKFLOW_RUN_EVENT_OBJ: ${{ toJSON(github.event) }}
+          WORKFLOW_RUN_EVENT_OBJ: ${{ toJSON(github) }}
         run: |
         
           echo $WORKFLOW_RUN_EVENT_OBJ
 
-          PREVIOUS_JOB_ID=$(jq -r '.id' <<< "$WORKFLOW_RUN_EVENT_OBJ")
+          PREVIOUS_JOB_ID=$(jq -r '.run_id' <<< "$WORKFLOW_RUN_EVENT_OBJ")
           echo "Previous Job ID: $PREVIOUS_JOB_ID"
           echo "PREVIOUS_JOB_ID=$PREVIOUS_JOB_ID" >> "$GITHUB_ENV"
 
@@ -89,7 +89,7 @@ jobs:
 
             | Logs      | ${{ env.JOB_PATH }}
 
-            | Jar Files | ${{ env. ARTIFACT_URL }}
+            | Jar Files | ${{ env.ARTIFACT_URL }}
 
             [badge]: https://img.shields.io/badge/Build-Success!-3fb950?logo=github&style=for-the-badge  
           
