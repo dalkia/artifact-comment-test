@@ -50,6 +50,9 @@ jobs:
           echo "HEAD_SHA=$HEAD_SHA" >> "$GITHUB_ENV"
 
       - name: Update Comment
+        permissions:
+          contents: read
+          pull-requests: write
         env:
           JOB_PATH: "${{ github.server_url }}/${{ github.repository }}/actions/\
             runs/${{ env.PREVIOUS_JOB_ID }}"
