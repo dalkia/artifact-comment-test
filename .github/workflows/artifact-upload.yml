@@ -31,10 +31,6 @@ jobs:
           path: ${{ env.ARTIFACT_PATH }}/${{ env.ARTIFACT_NAME }}
           if-no-files-found: error
           
-  comment-on-pr:
-    runs-on: ubuntu-latest
-    steps:
-
       - name: Get Artifact URL & PR Info
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -93,4 +89,6 @@ jobs:
 
             | Jar Files | ${{ env.ARTIFACT_URL }}
 
-            [badge]: https://img.shields.io/badge/Build-Success!-3fb950?logo=github&style=for-the-badge          
+            [badge]: https://img.shields.io/badge/Build-Success!-3fb950?logo=github&style=for-the-badge                    
+          
+
