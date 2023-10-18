@@ -9,13 +9,15 @@ on:
     workflows:
       - "Artifact Upload"
 
+permissions:
+  contents: read  
+  pull-requests: write
 
 jobs:
   comment-on-pr:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
-
       - name: Get Artifact URL & PR Info
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -49,15 +51,12 @@ jobs:
           echo "Head sha: $HEAD_SHA"
           echo "HEAD_SHA=$HEAD_SHA" >> "$GITHUB_ENV"
 
-      - name: Update Comment
-        permissions:
-          contents: read
-          pull-requests: write
+      - name: Update Comment        
         env:
           JOB_PATH: "${{ github.server_url }}/${{ github.repository }}/actions/\
             runs/${{ env.PREVIOUS_JOB_ID }}"
           HEAD_SHA: ${{ env.HEAD_SHA }}
-        uses: peter-evans/create-or-update-comment@v2
+        uses: peter-evans/create-or-update-comment@v3.0.2
         with:
           issue-number: ${{ env.PR_NUMBER }}
           body: |-
