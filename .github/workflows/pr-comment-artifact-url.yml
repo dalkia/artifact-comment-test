@@ -4,10 +4,9 @@ name: Comment Artifact URL on PR
 
 on:
   workflow_run:
-    types:
-      - "completed"
-    workflows:
-      - "Artifact Upload"
+    workflows: [Artifact Upload]
+    types: [completed]
+
 
 jobs:
   comment-on-pr:
