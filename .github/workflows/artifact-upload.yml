@@ -1,6 +1,6 @@
 # artifact-upload.yml
 ---
-name: Artifact Upload
+name: Build
 
 on:
   pull_request:
