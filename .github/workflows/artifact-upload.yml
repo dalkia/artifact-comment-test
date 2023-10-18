@@ -36,7 +36,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           OWNER: ${{ github.repository_owner }}
           REPO: ${{ github.event.repository.name }}
-          WORKFLOW_RUN_EVENT_OBJ: ${{ toJSON(github) }}
+          WORKFLOW_RUN_EVENT_OBJ: ${{ toJSON(github.workflow) }}
         run: |
         
           echo $WORKFLOW_RUN_EVENT_OBJ
