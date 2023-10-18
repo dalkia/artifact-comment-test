@@ -30,6 +30,7 @@ jobs:
           name: ${{ env.ARTIFACT_NAME }}
           path: ${{ env.ARTIFACT_PATH }}/${{ env.ARTIFACT_NAME }}
           if-no-files-found: error
+          
   comment-on-pr:
     runs-on: ubuntu-latest
     steps:
@@ -72,7 +73,7 @@ jobs:
           JOB_PATH: "${{ github.server_url }}/${{ github.repository }}/actions/\
             runs/${{ env.PREVIOUS_JOB_ID }}"
           HEAD_SHA: ${{ env.HEAD_SHA }}
-        uses: peter-evans/create-or-update-comment@v2
+        uses: peter-evans/create-or-update-comment@v3.0.2
         with:
           issue-number: ${{ env.PR_NUMBER }}
           body: |-
