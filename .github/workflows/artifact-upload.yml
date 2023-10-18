@@ -38,7 +38,7 @@ jobs:
           REPO: ${{ github.repository.name }}
         run: |
         
-          PREVIOUS_JOB_ID=github.event.workflow_run.id
+          PREVIOUS_JOB_ID= ${{ github.event.workflow_run.id }}
           echo "Previous Job ID: $PREVIOUS_JOB_ID"
           echo "PREVIOUS_JOB_ID=$PREVIOUS_JOB_ID" >> "$GITHUB_ENV"
 
@@ -51,12 +51,12 @@ jobs:
           echo "ARTIFACT URL: $ARTIFACT_URL"
           echo "ARTIFACT_URL=$ARTIFACT_URL" >> "$GITHUB_ENV"
 
-          PR_NUMBER= github.event.pull_request.number
+          PR_NUMBER= ${{ github.event.pull_request.number }}
 
           echo "PR Number: $PR_NUMBER"
           echo "PR_NUMBER=$PR_NUMBER" >> "$GITHUB_ENV"
 
-          HEAD_SHA= github.event.head.sha
+          HEAD_SHA= ${{ github.event.head.sha }}
 
           echo "Head sha: $HEAD_SHA"
           echo "HEAD_SHA=$HEAD_SHA" >> "$GITHUB_ENV"
