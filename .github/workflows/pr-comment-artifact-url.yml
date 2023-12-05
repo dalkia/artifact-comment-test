@@ -8,6 +8,8 @@ on:
       - "completed"
     workflows:
       - "Artifact Upload"
+    branches-ignore:
+      - "main"
 
 permissions:
   contents: read  
