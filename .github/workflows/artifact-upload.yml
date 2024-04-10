@@ -15,6 +15,7 @@ jobs:
   create-artifact:
     env:
       ARTIFACT_NAME: artifact.txt
+      ARTIFACT_NAME_2: artifact2.txt
       ARTIFACT_PATH: ./
     runs-on: ubuntu-latest
     steps:
@@ -24,6 +25,8 @@ jobs:
 
           # Here we just create something for the example
           echo "stuff I want to artifact" > "$ARTIFACT_PATH/$ARTIFACT_NAME"
+          echo "stuff I want to artifact" > "$ARTIFACT_PATH/$ARTIFACT_NAME_2"
+
 
       - name: Upload Artifact
         id: upload
@@ -31,4 +34,12 @@ jobs:
         with:
           name: ${{ env.ARTIFACT_NAME }}
           path: ${{ env.ARTIFACT_PATH }}/${{ env.ARTIFACT_NAME }}
+          if-no-files-found: error
+
+      - name: Upload Artifact 2
+        id: upload
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: ${{ env.ARTIFACT_NAME_2 }}
+          path: ${{ env.ARTIFACT_PATH }}/${{ env.ARTIFACT_NAME_2 }}
           if-no-files-found: error
