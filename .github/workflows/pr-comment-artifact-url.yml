@@ -78,7 +78,7 @@ jobs:
           comment-id: ${{ steps.find-comment.outputs.comment-id }}
           edit-mode: replace
           body: |-
-            ![badge] <img src="https://cryptologos.cc/logos/decentraland-mana-logo.svg?v=032" width="100"> 
+            ![badge]  <img src="https://cryptologos.cc/logos/decentraland-mana-logo.svg?v=032" width="30"> 
             
             Windows build successfull! You can find a link to the downloadable artifact below.
             
