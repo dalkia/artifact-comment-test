@@ -26,6 +26,10 @@ jobs:
           # Here we just create something for the example
           echo "stuff I want to artifact" > "$ARTIFACT_PATH/$ARTIFACT_NAME"
 
+      - name: Sleep for 60 seconds
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '30s'
 
       - name: Upload Artifact
         id: upload
