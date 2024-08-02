@@ -1,6 +1,6 @@
 # pr-comment-artifact-url.yml
 ---
-name: Comment Artifact URL on PR
+name: Delete Artifact URL in PR
 
 on:
   workflow_run:
