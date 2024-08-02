@@ -15,6 +15,7 @@ jobs:
   create-artifact:
     env:
       ARTIFACT_NAME: artifact.txt
+      ARTIFACT_NAME_2: artifact2.txt
       ARTIFACT_PATH: ./
     runs-on: ubuntu-latest
     steps:
@@ -24,6 +25,7 @@ jobs:
 
           # Here we just create something for the example
           echo "stuff I want to artifact" > "$ARTIFACT_PATH/$ARTIFACT_NAME"
+
 
       - name: Upload Artifact
         id: upload
