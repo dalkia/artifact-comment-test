@@ -1,0 +1,40 @@
+# pr-comment-artifact-url.yml
+---
+name: Comment Artifact URL on PR
+
+on:
+  workflow_run:
+    types:
+      - "requested"
+    workflows:
+      - "Artifact Upload"
+    branches-ignore:
+      - "main"
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  delete-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Find Comment
+        uses: peter-evans/find-comment@v2
+        id: find-comment
+        with:
+          issue-number: ${{ env.PR_NUMBER }}
+          comment-author: 'github-actions[bot]'
+      - name: Update Comment
+        env:
+          JOB_PATH: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ env.PREVIOUS_JOB_ID }}"
+          ARTIFACT_URL: "${{ github.server_url }}/${{ github.repository }}/suites/${{ env.SUITE_ID }}/artifacts/${{ env.ARTIFACT_ID }}"
+          HEAD_SHA: "${{ env.HEAD_SHA }}"
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          issue-number: ${{ env.PR_NUMBER }}
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          edit-mode: replace
+          body: 
+            Build is in progres...
+  
