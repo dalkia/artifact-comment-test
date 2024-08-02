@@ -43,6 +43,8 @@ jobs:
           comment-id: ${{ steps.find-comment.outputs.comment-id }}
           edit-mode: replace
           body: |-
-            ![badge]
+            ![badge]  <img src="https://ui.decentraland.org/decentraland_256x256.png" width="30"> 
             
-            Replacing build
+            Replacing build, come back later!
+
+            [badge]: https://img.shields.io/badge/Build-Pending!-ffff00?logo=github&style=for-the-badge
