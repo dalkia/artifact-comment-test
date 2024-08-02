@@ -19,6 +19,10 @@ jobs:
       ARTIFACT_PATH: ./
     runs-on: ubuntu-latest
     steps:
+      - name: Sleep for 60 seconds
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '30s'
 
       - name: Create something to artifact
         run: |
